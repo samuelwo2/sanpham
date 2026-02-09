@@ -1,0 +1,91 @@
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-color), #ff5252);
+  color: white;
+  padding: 100px 0;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.hero-btn {
+  padding: 15px 40px;
+  font-size: 16px;
+}
+
+.featured-products, .new-arrivals {
+  margin-bottom: 60px;
+}
+
+.view-all {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.banner-section {
+  background-color: var(--light-color);
+  padding: 60px 0;
+}
+
+.banner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.banner-item {
+  background-color: white;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s;
+}
+
+.banner-item:hover {
+  transform: translateY(-5px);
+}
+
+.banner-content h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--dark-color);
+}
+
+.banner-content p {
+  color: var(--gray-color);
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 0;
+  }
+  
+  .hero-title {
+    font-size: 36px;
+  }
+  
+  .hero-subtitle {
+    font-size: 16px;
+  }
+  
+  .banner-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

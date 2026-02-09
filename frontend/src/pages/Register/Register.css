@@ -1,0 +1,142 @@
+.register-page {
+  padding: 60px 0;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.register-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.register-form-container {
+  padding: 40px;
+}
+
+.register-title {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: var(--dark-color);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-agreement {
+  margin: 25px 0;
+}
+
+.agreement-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.agreement-checkbox input[type="checkbox"] {
+  margin-top: 3px;
+}
+
+.agreement-checkbox a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.register-btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.login-link {
+  text-align: center;
+  color: var(--gray-color);
+}
+
+.login-link a {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.register-info {
+  background: linear-gradient(135deg, var(--secondary-color), #36d1dc);
+  color: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.register-info h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+}
+
+.benefits-list li {
+  margin-bottom: 25px;
+  padding-left: 30px;
+  position: relative;
+}
+
+.benefits-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.benefits-list strong {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.benefits-list p {
+  opacity: 0.9;
+  font-size: 14px;
+}
+
+@media (max-width: 992px) {
+  .register-wrapper {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .register-info {
+    padding: 30px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-form-container,
+  .register-info {
+    padding: 25px;
+  }
+  
+  .register-title {
+    font-size: 28px;
+  }
+}
