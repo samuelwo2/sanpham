@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { FaShoppingCart, FaUser, FaBars } from 'react-icons/fa';
+import { FaShoppingCart, FaUser, FaBars, FaTimes } from 'react-icons/fa';
 import './Header.css';
 import CartIcon from './CartIcon';
 import SearchBar from './SearchBar';
@@ -9,7 +9,7 @@ import SearchBar from './SearchBar';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { itemCount } = useSelector((state) => state.cart);
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
 
   return (
     <header className="header">
@@ -29,11 +29,17 @@ const Header = () => {
 
           {/* Navigation */}
           <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
+            <button 
+              className="nav-close"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FaTimes />
+            </button>
             <ul className="nav-list">
               <li><Link to="/" onClick={() => setIsMenuOpen(false)}>Trang chủ</Link></li>
               <li><Link to="/shop" onClick={() => setIsMenuOpen(false)}>Cửa hàng</Link></li>
-              <li><Link to="#" onClick={() => setIsMenuOpen(false)}>Danh mục</Link></li>
-              <li><Link to="#" onClick={() => setIsMenuOpen(false)}>Liên hệ</Link></li>
+              <li><Link to="/about" onClick={() => setIsMenuOpen(false)}>Giới thiệu</Link></li>
+              <li><Link to="/contact" onClick={() => setIsMenuOpen(false)}>Liên hệ</Link></li>
             </ul>
           </nav>
 
@@ -43,8 +49,11 @@ const Header = () => {
               <CartIcon count={itemCount} />
             </Link>
             
-            <Link to={isAuthenticated ? "/account" : "/login"} className="user-icon">
+            <Link to={isAuthenticated ? "/profile" : "/login"} className="user-icon">
               <FaUser />
+              {isAuthenticated && user?.name && (
+                <span className="user-name-mobile">{user.name.split(' ').pop()}</span>
+              )}
             </Link>
             
             <button 
@@ -55,6 +64,16 @@ const Header = () => {
             </button>
           </div>
         </div>
+
+        {/* User info for desktop */}
+        {isAuthenticated && user && (
+          <div className="user-info">
+            <span>Xin chào, <Link to="/profile" className="user-name">{user.name}</Link></span>
+            {user.role === 'admin' && (
+              <Link to="/admin" className="admin-link">Admin</Link>
+            )}
+          </div>
+        )}
       </div>
     </header>
   );

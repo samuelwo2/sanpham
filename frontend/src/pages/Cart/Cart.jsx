@@ -6,6 +6,7 @@ import { removeFromCart, updateQuantity, clearCart } from '../../store/slices/ca
 import { formatCurrency } from '../../utils/helpers';
 import './Cart.css';
 
+
 const Cart = () => {
   const dispatch = useDispatch();
   const { items, total, itemCount } = useSelector((state) => state.cart);

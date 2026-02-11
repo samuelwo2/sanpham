@@ -1,6 +1,6 @@
 .header {
   background-color: white;
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -11,13 +11,19 @@
   align-items: center;
   justify-content: space-between;
   padding: 15px 0;
+  position: relative;
 }
 
 .logo h1 {
   font-size: 24px;
   font-weight: 700;
-  color: var(--primary-color);
+  color: #667eea;
   margin: 0;
+  transition: color 0.3s;
+}
+
+.logo h1:hover {
+  color: #764ba2;
 }
 
 .search-container {
@@ -26,20 +32,52 @@
   margin: 0 20px;
 }
 
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
 .nav-list {
   display: flex;
   gap: 30px;
   margin: 0;
+  padding: 0;
 }
 
 .nav-list a {
   font-weight: 500;
-  color: var(--dark-color);
+  color: #2d3436;
   transition: color 0.3s;
+  position: relative;
 }
 
 .nav-list a:hover {
-  color: var(--primary-color);
+  color: #667eea;
+}
+
+.nav-list a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.3s;
+}
+
+.nav-list a:hover::after {
+  width: 100%;
+}
+
+.nav-close {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
 }
 
 .user-actions {
@@ -48,15 +86,59 @@
   gap: 20px;
 }
 
-.cart-icon, .user-icon {
+.cart-icon,
+.user-icon {
   font-size: 20px;
-  color: var(--dark-color);
+  color: #2d3436;
   position: relative;
   transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.cart-icon:hover, .user-icon:hover {
-  color: var(--primary-color);
+.cart-icon:hover,
+.user-icon:hover {
+  color: #667eea;
+}
+
+.user-name-mobile {
+  display: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.user-info {
+  padding: 10px 0 5px;
+  text-align: right;
+  font-size: 14px;
+  color: #666;
+  border-top: 1px solid #eee;
+}
+
+.user-info .user-name {
+  color: #667eea;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.user-info .user-name:hover {
+  text-decoration: underline;
+}
+
+.admin-link {
+  margin-left: 15px;
+  padding: 3px 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.admin-link:hover {
+  transform: translateY(-2px);
 }
 
 .menu-toggle {
@@ -65,12 +147,13 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: var(--dark-color);
+  color: #2d3436;
 }
 
+/* Responsive */
 @media (max-width: 992px) {
   .search-container {
-    display: none;
+    max-width: 350px;
   }
 }
 
@@ -79,36 +162,76 @@
     flex-wrap: wrap;
   }
   
+  .logo {
+    flex: 1;
+  }
+  
+  .search-container {
+    order: 3;
+    max-width: 100%;
+    margin: 15px 0 0;
+    display: block;
+  }
+  
   .nav {
     position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background-color: white;
-    box-shadow: var(--shadow);
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 2000;
+    display: block;
   }
   
   .nav.open {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
+    left: 0;
   }
   
   .nav-list {
     flex-direction: column;
-    padding: 20px;
-    gap: 15px;
+    padding: 80px 20px 20px;
+    gap: 20px;
+  }
+  
+  .nav-list a {
+    display: block;
+    padding: 10px 0;
+    font-size: 18px;
+  }
+  
+  .nav-close {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
   }
   
   .menu-toggle {
     display: block;
   }
   
+  .user-name-mobile {
+    display: inline-block;
+  }
+  
+  .user-info {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo h1 {
+    font-size: 20px;
+  }
+  
   .user-actions {
     gap: 15px;
+  }
+  
+  .nav {
+    width: 100%;
   }
 }

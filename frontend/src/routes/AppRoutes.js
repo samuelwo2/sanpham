@@ -14,18 +14,18 @@ import Cart from '../pages/Cart/Cart';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import About from '../pages/About/About';
-import Contact from '../pages/contact/ConTact';
+import Contact from '../pages/contact/ConTact'; // Đã đúng
 
 // Protected Pages
-import Checkout from '../pages/Checkout/Checkout';
-import UserProfile from '../pages/User/Profile';
+import CheckOut from '../pages/checkout/CheckOut'; // Sửa tên import
+import UserProfile from '../pages/User/Profile.jsx';
 import UserOrders from '../pages/User/Orders';
 
 // Admin Pages
 import AdminDashboard from '../pages/admin/Dashboard/Dashboard';
-import AdminProducts from '../pages/admin/Products/Products';
+import AdminProducts from '../pages/admin/Products/Products.jsx/index.js';
 import AdminOrders from '../pages/admin/Orders/Orders';
-import AdminUsers from '../pages/admin/Users/Users';
+import AdminUsers from '../pages/admin/Users/Profile.jsx';
 
 // Components
 import ProtectedRoute from './ProtectedRoute';
@@ -50,7 +50,7 @@ const AppRoutes = () => {
         {/* Protected routes */}
         <Route path="checkout" element={
           <ProtectedRoute>
-            <Checkout />
+            <CheckOut /> {/* Sửa tên component */}
           </ProtectedRoute>
         } />
         
@@ -86,6 +86,9 @@ const AppRoutes = () => {
           <div style={{ padding: '100px 0', textAlign: 'center' }}>
             <h1>404 - Trang không tồn tại</h1>
             <p>Trang bạn đang tìm kiếm không có sẵn.</p>
+            <button onClick={() => window.location.href = '/'}>
+              Về trang chủ
+            </button>
           </div>
         </MainLayout>
       } />

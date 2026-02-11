@@ -187,7 +187,16 @@
   text-align: center;
   justify-content: center;
 }
-
+.checkout-btn {
+  border-radius: 1 soild 1px;
+  background-color: aqua;
+  color: rgb(255, 255, 255);
+}
+.checkout-btn:hover {
+  background-color: rgb(57, 150, 231);
+  color: rgb(255, 255, 255);
+  scale: 1;
+}
 .summary-notice {
   margin-top: 20px;
   padding-top: 20px;
